@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "گزارش عملکرد ";
+
+}
+
+
+
+<div class="container-fluid rtl" id="GTINReportID" ng-app="GTINReportApp" ng-controller="GTINReportCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading text-right">
+                    گزارش GTIN
+                </div>
+                <div class="panel-body">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1 form-inline row-margin-bottom">
+
+                                    <div class="form-group">
+                                        <label class="control-label">از تاریخ : &nbsp;</label>
+                                        <div class="input-group" dir="ltr">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                            <input type="text" class="form-control datepicker" id="firstDate" name="firstDate" placeholder="مثال: 97/07/10"
+                                                   ng-model="ReportSearchModel.FromDate" data-targetselector="#firstDate" data-mddatetimepicker="true"
+                                                   data-placement="bottom" tabindex="4" readonly />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label">تا تاریخ : &nbsp;</label>
+                                        <div class="input-group" dir="ltr">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                            <input type="text" class="form-control datepicker" id="secondDate" name="secondDate" placeholder="مثال: 97/07/20"
+                                                   data-targetselector="#secondDate" ng-model="ReportSearchModel.ToDate" data-mddatetimepicker="true"
+                                                   data-placement="bottom" tabindex="5" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary" ng-click="GetReport()">جستجو</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-10 col-md-offset-1">
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">عنوان</th>
+                                                <th class="text-center">تعداد کد داخلی</th>
+                                                <th class="text-center">تعداد کد بین المللی</th>
+                                                <th class="text-center">تعداد کل</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in DataResult">
+                                                <td class="text-center">{{item.Title}}</td>
+                                                <td class="text-center">{{item.InternalCodeCount}}</td>
+                                                <td class="text-center">{{item.ExternalCodeCount}}</td>
+                                                <td class="text-center">{{item.CountGTIN}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+						<!--------- Grid --------->
+@*<div class="row" ng-if="UserPermissionData.length > 0">
+    <div class="col-md-12">
+        <div ui-grid="GridOptions" ui-grid-pagination="" dir="rtl" style="text-align:center;" ui-grid-resize-columns ui-grid-exporter ui-grid-move-columns></div>
+
+        <div class="text-center" ng-show="GridOptions.totalItems > numRows">
+            <ul uib-pagination total-items="GridOptions.totalItems" ng-model="GridOptions.paginationCurrentPage"
+                max-size="maxSize" class="col-md-12 page pagination-sm" boundary-links="true"
+                first-text="اولین" last-text="آخرین" previous-text="قبلی" next-text="بعدی" rotate="false"></ul>
+        </div>
+    </div>
+</div>*@
+
+
+@section scripts{
+<script src="~/Scripts/Projects/Magfa.js"></script>
+}
